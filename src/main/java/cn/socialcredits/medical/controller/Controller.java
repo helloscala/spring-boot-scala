@@ -12,7 +12,10 @@ import play.libs.ws.WSRequest;
 import play.libs.ws.WSResponse;
 import play.libs.ws.ning.NingWSClient;
 
+import java.util.concurrent.TimeUnit;
+
 /**
+ * Controller
  * Created by Yang Jing (yangbajing@gmail.com) on 2015-12-19.
  */
 @RestController
@@ -22,14 +25,13 @@ public class Controller {
     @RequestMapping(value = "/qq", method = RequestMethod.GET)
     @ResponseBody
     public String qq() {
-        WSRequest client = ws.url("http://www.qq.com");
-        F.Promise<WSResponse> f = client.get();
-        f.map(resp -> {
-            JsonNode jv = resp.asJson();
-            return resp;
-        });
-        String body = client.get().get(10 * 1000).getBody();
-        System.out.println(body);
+        long begin = System.currentTimeMillis();
+        WSRequest client = ws.url("http://127.0.0.1:8080/api/hello");
+        F.Promise<WSResponse> response = client
+                .setRequestTimeout(TimeUnit.SECONDS.toMillis(10))
+                .get();
+        String body = response.get(20, TimeUnit.SECONDS).getBody();
+        System.out.println((System.currentTimeMillis() - begin) + "  " + body);
         return body;
     }
 }

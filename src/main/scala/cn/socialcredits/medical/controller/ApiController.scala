@@ -1,5 +1,6 @@
 package cn.socialcredits.medical.controller
 
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 import com.ning.http.client.AsyncHttpClientConfig
@@ -17,6 +18,7 @@ class ApiController {
   @ResponseBody
   def hello(): Message = {
 
+    TimeUnit.SECONDS.sleep(60)
     val message = new Message()
     message.value = "Hello, Scala for Spring!"
     message
