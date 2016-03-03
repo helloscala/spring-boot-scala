@@ -1,11 +1,8 @@
-package cn.socialcredits.medical.controller
+package me.yangbajing.springscala.controller
 
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 
-import com.ning.http.client.AsyncHttpClientConfig
 import org.springframework.web.bind.annotation.{RequestMapping, RequestMethod, ResponseBody, RestController}
-import play.libs.ws.ning.NingWSClient
 
 /**
   * Created by Yang Jing (yangbajing@gmail.com) on 2015-12-18.
@@ -17,8 +14,7 @@ class ApiController {
   @RequestMapping(value = Array("/hello"), method = Array(RequestMethod.GET))
   @ResponseBody
   def hello(): Message = {
-
-    TimeUnit.SECONDS.sleep(60)
+    TimeUnit.SECONDS.sleep(6)
     val message = new Message()
     message.value = "Hello, Scala for Spring!"
     message

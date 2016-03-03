@@ -1,4 +1,4 @@
-package cn.socialcredits.medical.controller
+package me.yangbajing.springscala.controller
 
 import scala.beans.BeanProperty
 
