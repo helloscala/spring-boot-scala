@@ -19,9 +19,13 @@ cd spring-boot-scala
 
 ```
 ./sbt
-spring-boot-scala > project web  # 
+spring-boot-scala > project web 
 web > runMain me.yangbajing.springbootscala.SpringscalaApplication
 ```
+
+*注：.... > 为sbt控制台提示符，请输入 > 符号后面部分*
+
+**访问Spring Boot应用**
 
 打开浏览器访问：[http://localhost:18080/web/message](http://localhost:18080/web/message) 或 [http://localhost:18080/api/message](http://localhost:18080/api/message)。
 

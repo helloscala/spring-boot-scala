@@ -50,6 +50,7 @@ object Build extends Build {
     .aggregate(web)
 
   lazy val web = Project("web", file("web"))
+    .dependsOn(common)
     .settings(basicSettings: _*)
 
   lazy val common = Project("common", file("common"))
