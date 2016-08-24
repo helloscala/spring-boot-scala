@@ -1,0 +1,10 @@
+description = 'springbootscala-web'
+
+jar {
+	baseName = 'springbootscala-web'
+}
+
+dependencies {
+    compile project(':common')
+}
+

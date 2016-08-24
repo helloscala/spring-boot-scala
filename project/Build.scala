@@ -3,40 +3,60 @@ import sbt._
 
 object Build extends Build {
 
+  val verScala = "2.11.8"
+
+  val verSpringBoot = "1.4.0.RELEASE"
+  val _springBootStarterTest = "org.springframework.boot" % "spring-boot-starter-test" % verSpringBoot
+  val _springBootStarterWeb = "org.springframework.boot" % "spring-boot-starter-web" % verSpringBoot
+  val _springBootStarterActuator = "org.springframework.boot" % "spring-boot-starter-actuator" % verSpringBoot
+  val _springBootStarterMail = "org.springframework.boot" % "spring-boot-starter-mail" % verSpringBoot
+
+  val _jacksonModuleScala = "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.8.0.rc2"
+
+  def basicSettings = Seq(
+    description := "Spring boot scala",
+    version := "version",
+    homepage := Some(new URL("https://github.com/yangbajing/spring-boot-scala")),
+    organization := "me.yangbajing",
+    organizationHomepage := Some(new URL("http://www.yangbajing.me")),
+    startYear := Some(2016),
+    scalaVersion := verScala,
+    scalacOptions ++= Seq(
+      "-encoding", "utf8",
+      "-unchecked",
+      "-feature",
+      "-deprecation"
+    ),
+    javacOptions ++= Seq(
+      "-source", "1.8",
+      "-target", "1.8",
+      "-encoding", "utf8",
+      "-Xlint:unchecked",
+      "-Xlint:deprecation"
+    ),
+    offline := true,
+    libraryDependencies ++= Seq(
+      _jacksonModuleScala,
+      _springBootStarterWeb,
+      _springBootStarterActuator,
+      _springBootStarterTest % "test")
+  )
+
   override lazy val settings = super.settings :+ {
     shellPrompt := (s => Project.extract(s).currentProject.id + " > ")
   }
 
-  lazy val root = Project("springscala", file("."))
-    .settings(
-      description := "Spring boot scala",
-      version := "0.0.1",
-      homepage := Some(new URL("https://github.com/yangbajing/spring-boot-scala")),
-      organization := "me.yangbajing",
-      organizationHomepage := Some(new URL("http://www.yangbajing.me")),
-      startYear := Some(2016),
-      scalaVersion := "2.11.7",
-      scalacOptions ++= Seq(
-        "-encoding", "utf8",
-        "-unchecked",
-        "-feature",
-        "-deprecation"
-      ),
-      javacOptions ++= Seq(
-        "-source", "1.8",
-        "-target", "1.8",
-        "-encoding", "utf8",
-        "-Xlint:unchecked",
-        "-Xlint:deprecation"
-      ),
-      offline := true,
-      libraryDependencies ++= Seq(
-        _springBootStarterWeb,
-        _springBootStarterTest))
+  lazy val parent = Project("spring-boot-scala", file("."))
+    .aggregate(web)
 
-  val verSpringBoot = "1.3.3.RELEASE"
-  val _springBootStarterWeb = "org.springframework.boot" % "spring-boot-starter-web" % verSpringBoot
-  val _springBootStarterTest = "org.springframework.boot" % "spring-boot-starter-test" % verSpringBoot
+  lazy val web = Project("web", file("web"))
+    .settings(basicSettings: _*)
+
+  lazy val common = Project("common", file("common"))
+    .settings(basicSettings: _*)
+    .settings(
+      libraryDependencies += _springBootStarterMail
+    )
 
 }
 
