@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.{RequestMapping, RequestMethod, R
 class ApiController {
 
   @RequestMapping(path = Array("message"), method = Array(RequestMethod.GET))
-  def message(): Message = {
-    Message("Yang Jing", 30)
+  def message(): Seq[Message] = {
+    List(
+      Message("Yang Jing", 30),
+      Message("yangbajing", 31)
+    )
   }
 
 }
