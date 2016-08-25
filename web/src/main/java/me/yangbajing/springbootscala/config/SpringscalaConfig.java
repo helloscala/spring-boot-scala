@@ -18,7 +18,7 @@ public class SpringscalaConfig {
     @Bean
     public Jackson2ObjectMapperBuilder jacksonBuilder() {
         return new Jackson2ObjectMapperBuilder()
-                .indentOutput(true)
+//                .indentOutput(true)
                 .dateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS"))
                 .modules(new DefaultScalaModule(), new Jdk8Module(), new JavaTimeModule());
     }
