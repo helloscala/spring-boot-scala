@@ -1,11 +1,11 @@
 package me.yangbajing.springbootscala.data.domain
 
-import me.yangbajing.springbootscala.common.Utils
+import java.time.LocalDateTime
 
 import scala.beans.BeanProperty
 
-case class Message(name: String, age: Int) {
+case class Message(name: String, age: Int, user: User) {
   @BeanProperty
-  val sign: String = Utils.randomString(16)
+  val createdAt: LocalDateTime = LocalDateTime.now()
 }
 
