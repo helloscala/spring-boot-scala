@@ -59,7 +59,7 @@ subprojects {
         testCompile('org.springframework.boot:spring-boot-starter-test')
     }
 
-    // 这里需要重新设置Scala和Java源码的搜索路径，把Java源码路径移动Scala的搜索路径来。不然编译时会遇到Java代码找不到Scala代码符号问题
+    // 这里需要重新设置Scala和Java源码的搜索路径，把Java源码路径移动到Scala的搜索路径来。不然编译时会遇到Java代码找不到Scala代码符号问题
     sourceSets {
         main {
             scala {
@@ -77,12 +77,6 @@ subprojects {
                 srcDirs = []
             }
         }
-    }
-
-    //Java compiler settings
-    tasks.withType(JavaCompile) {
-        //ignore conjunction warning
-        options.compilerArgs << '-Xlint:-options'
     }
 
     tasks.withType(ScalaCompile) {
