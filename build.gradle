@@ -3,7 +3,7 @@ buildscript {
         springBootVersion = '1.4.0.RELEASE'
         scalaVersion = '2.11.8'
         scalaLibVersion = '2.11'
-        jacksonVersion = '2.8.1'
+        jacksonVersion = '2.8.2'
     }
     repositories {
         mavenCentral()
@@ -20,7 +20,7 @@ task wrapper(type: Wrapper) {
 }
 
 subprojects {
-    apply plugin: 'java'
+//    apply plugin: 'java'
     apply plugin: 'scala'
 //    apply plugin: 'eclipse'
     apply plugin: 'spring-boot'
@@ -30,7 +30,7 @@ subprojects {
         jcenter()
     }
 
-    group = 'me.yangbajing.springbootscala'
+    group = 'com.helloscala.springbootscala'
     version = '1.0.0'
 
     sourceCompatibility = 1.8
@@ -53,7 +53,7 @@ subprojects {
         compile("org.scala-lang:scala-library:$scalaVersion")
         compile("org.scala-lang:scala-reflect:$scalaVersion")
         compile("org.scala-lang.modules:scala-java8-compat_$scalaLibVersion:0.7.0")
-        compile("com.fasterxml.jackson.module:jackson-module-scala_$scalaLibVersion:2.8.2")
+        compile("com.fasterxml.jackson.module:jackson-module-scala_$scalaLibVersion:$jacksonVersion")
         compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
         compile("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion")
         testCompile('org.springframework.boot:spring-boot-starter-test')

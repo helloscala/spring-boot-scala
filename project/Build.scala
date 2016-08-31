@@ -16,9 +16,9 @@ object Build extends Build {
   def basicSettings = Seq(
     description := "Spring boot scala",
     version := "version",
-    homepage := Some(new URL("https://github.com/yangbajing/spring-boot-scala")),
-    organization := "me.yangbajing",
-    organizationHomepage := Some(new URL("http://www.yangbajing.me")),
+    homepage := Some(new URL("https://github.com/helloscala/spring-boot-scala")),
+    organization := "com.helloscala",
+    organizationHomepage := Some(new URL("http://www.helloscala.com")),
     startYear := Some(2016),
     scalaVersion := verScala,
     scalacOptions ++= Seq(
