@@ -53,7 +53,7 @@ subprojects {
         compile("org.scala-lang:scala-library:$scalaVersion")
         compile("org.scala-lang:scala-reflect:$scalaVersion")
         compile("org.scala-lang.modules:scala-java8-compat_$scalaLibVersion:0.7.0")
-        compile("com.fasterxml.jackson.module:jackson-module-scala_$scalaLibVersion:2.8.0.rc2")
+        compile("com.fasterxml.jackson.module:jackson-module-scala_$scalaLibVersion:2.8.2")
         compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
         compile("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:$jacksonVersion")
         testCompile('org.springframework.boot:spring-boot-starter-test')
